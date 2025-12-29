@@ -33,7 +33,7 @@ const SmoothScrollHero = () => {
             scrollTrigger: {
                 trigger: mainContainer.current,
                 start: "top top",
-                end: "+=400%",
+                end: "+=250%",
                 scrub: 1,
                 pin: true,
                 anticipatePin: 1,
@@ -52,7 +52,7 @@ const SmoothScrollHero = () => {
                 duration: 8,
                 ease: "power2.in"
             }, 0)
-            .to(".scroll-indicator", { opacity: 0, duration: 2 }, 0);
+            .to(".scroll-indicator", { opacity: 0, duration: 1 }, 0);
 
         // 2. Move Logo to Navbar position (Now it stays fixed because parent is fixed)
         tl.to(logoRef.current, {
@@ -60,7 +60,7 @@ const SmoothScrollHero = () => {
             scale: 0.6,
             duration: 8,
             ease: "power2.inOut"
-        }, 0.5);
+        }, 1.5);
 
         // 3. Sky interaction
         tl.to(".sky-bg", { scale: 1.2, duration: 10 }, 0);
@@ -169,6 +169,7 @@ const SmoothScrollHero = () => {
                             </div>
                             <span>SCROLL DOWN</span>
                         </div>
+                        <p className='text-[9px] tracking-tight'>TO START THE JOURNEY</p>
                     </div>
                 </div>
 

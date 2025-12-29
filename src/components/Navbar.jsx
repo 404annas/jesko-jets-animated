@@ -3,7 +3,7 @@ import NavItem from "./NavbarItem";
 
 const Navbar = () => {
     return (
-        <div className="fixed top-0 left-0 w-full flex items-center justify-between px-20 py-8 text-[10px] z-[100] pointer-events-none">
+        <div className="fixed top-0 left-0 w-full flex items-center justify-between px-20 py-8 text-[10px] z-20">
             <div className="flex items-center gap-4 tracking-tight pointer-events-auto">
                 <NavItem text="About" />
                 <NavItem text="Our Fleet" />
