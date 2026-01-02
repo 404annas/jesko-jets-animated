@@ -34,7 +34,7 @@ const Hero = () => {
                     src={innerImage}
                     alt="Inner Background"
                     fill
-                    className="object-cover scale-128"
+                    className="object-cover -scale-128 sm:scale-128"
                     priority
                     quality={100}
                     style={{ objectFit: "cover" }}
@@ -73,7 +73,7 @@ const Hero = () => {
                     src={outerImage}
                     alt="Outer Background"
                     fill
-                    className="object-cover scale-128"
+                    className="object-cover -scale-128 sm:scale-128"
                     priority
                     quality={100}
                     style={{ objectFit: "cover" }}
@@ -86,7 +86,7 @@ const Hero = () => {
                     src={shadowImage}
                     alt="Shadow Background"
                     fill
-                    className="object-cover scale-150"
+                    className="object-cover -scale-150 sm:scale-150"
                     priority
                     quality={100}
                     style={{ objectFit: "cover" }}

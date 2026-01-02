@@ -15,12 +15,12 @@ import cloudsImage from "@/assets/images/cloudsImage.webp";
 import aboveImage from "@/assets/images/aboveImage.webp";
 import skyightLogo from "@/assets/images/logo.svg";
 import About from './About';
-import Navbar from './Navbar'; // Ensure Navbar is imported
+import Navbar from './Navbar';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const SmoothScrollHero = () => {
-    const scopeRef = useRef(null); // New scope for the entire component
+    const scopeRef = useRef(null);
     const mainContainer = useRef(null);
     const windowRef = useRef(null);
     const contentRef = useRef(null);
@@ -40,7 +40,6 @@ const SmoothScrollHero = () => {
             }
         });
 
-        // 1. Zoom Content and Window
         tl.to(windowRef.current, {
             scale: 5,
             duration: 10,
@@ -54,7 +53,6 @@ const SmoothScrollHero = () => {
             }, 0)
             .to(".scroll-indicator", { opacity: 0, duration: 1 }, 0);
 
-        // 2. Move Logo to Navbar position (Now it stays fixed because parent is fixed)
         const logoMoveFactor = window.innerWidth < 1024 ? 0.43 : 0.44;
 
         tl.to(logoRef.current, {
@@ -64,10 +62,8 @@ const SmoothScrollHero = () => {
             ease: "power2.inOut"
         }, 1.5);
 
-        // 3. Sky interaction
         tl.to(".sky-bg", { scale: 1.2, duration: 10 }, 0);
 
-        // 4. Reveal Second Section Text (The reveal animation you requested)
         tl.fromTo(secondSectionRef.current,
             {
                 opacity: 0,
@@ -86,7 +82,6 @@ const SmoothScrollHero = () => {
             9
         );
 
-        // Constant Cloud Movement
         gsap.fromTo(
             cloudsRef.current,
             { xPercent: 0 },
@@ -98,72 +93,95 @@ const SmoothScrollHero = () => {
             }
         );
 
-    }, { scope: scopeRef }); // Scope changed to scopeRef to include the fixed logo
+    }, { scope: scopeRef });
 
     return (
         <div ref={scopeRef} className="relative">
             <Navbar />
 
-            {/* FIXED LOGO LAYER - This stays on screen even when mainContainer scrolls away */}
             <div className="fixed inset-0 flex items-center justify-center z-[200] pointer-events-none">
-                <Image
-                    ref={logoRef}
-                    src={skyightLogo}
-                    alt="Skyight Logo"
-                    width={250}
-                    className="object-cover"
-                    priority
-                />
+                <div className="w-[150px] sm:w-[220px] lg:w-[250px]">
+                    <Image
+                        ref={logoRef}
+                        src={skyightLogo}
+                        alt="Skyight Logo"
+                        className="w-full h-auto object-contain"
+                        priority
+                    />
+                </div>
             </div>
 
-            {/* Fixed Sky Background */}
             <div className="fixed inset-0 -z-50">
-                <Image src={skyImage} alt="sky" fill className="object-cover object-bottom" priority />
+                <Image src={skyImage} alt="sky" fill className="object-cover object-bottom" priority quality={100} />
             </div>
 
-            {/* Fixed Clouds Layer */}
             <div className="fixed inset-0 -z-40 overflow-hidden">
                 <div ref={cloudsRef} className="clouds-drift absolute inset-0 flex w-[500%] h-full">
                     <div className="relative w-1/2 h-full">
-                        <Image src={cloudsImage} alt="clouds" fill className="object-cover opacity-60" />
+                        <Image src={cloudsImage} alt="clouds" fill className="object-cover opacity-60" sizes="100vw" />
                     </div>
                     <div className="relative w-1/2 h-full">
-                        <Image src={cloudsImage} alt="clouds" fill className="object-cover opacity-60" />
+                        <Image src={cloudsImage} alt="clouds" fill className="object-cover opacity-60" sizes="100vw" />
                     </div>
                 </div>
             </div>
 
-            {/* Hero Section (Pinned Container) */}
             <div ref={mainContainer} className="relative w-full h-screen overflow-hidden">
-                <div ref={windowRef} className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none">
+                <div ref={windowRef} className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none will-change-transform">
                     <div className="relative w-full h-full">
-                        <Image src={innerImage} alt="inner" fill className="object-cover scale-[1.3] z-10" />
-                        <Image src={shadowImage} alt="shadow" fill className="object-cover scale-[1.3] opacity-50 z-20" />
-                        <Image src={outerImage} alt="outer" fill className="object-cover scale-[1.3] z-30" />
+                        {/* Added sizes and transform style for clarity */}
+                        <Image
+                            src={innerImage}
+                            alt="inner"
+                            fill
+                            className="object-cover scale-100 lg:scale-[1.3] z-10"
+                            sizes="(max-width: 1024px) 100vw, 150vw"
+                            quality={100}
+                            style={{ transform: 'translateZ(0)' }}
+                        />
+                        <Image
+                            src={shadowImage}
+                            alt="shadow"
+                            fill
+                            className="object-cover scale-100 lg:scale-[1.3] opacity-50 z-20"
+                            sizes="(max-width: 1024px) 100vw, 150vw"
+                            quality={100}
+                            style={{ transform: 'translateZ(0)' }}
+                        />
+                        <Image
+                            src={outerImage}
+                            alt="outer"
+                            fill
+                            className="object-cover scale-100 lg:scale-[1.3] z-30"
+                            sizes="(max-width: 1024px) 100vw, 150vw"
+                            quality={100}
+                            style={{ transform: 'translateZ(0)' }}
+                        />
                         <div className="absolute top-[10%] left-[50.3%] -translate-x-1/2 w-[24%] h-auto z-10">
-                            <Image src={aboveImage} alt="above fixture" width={400} height={200} className="object-contain" />
+                            <Image src={aboveImage} alt="above fixture" width={400} height={200} className="object-contain" quality={100} />
                         </div>
                     </div>
                 </div>
 
+                {/* Rest of the component remains the same... */}
                 <div ref={contentRef} className="absolute inset-0 z-20 flex items-center justify-between px-20 text-white pointer-events-none">
                     <div className="hero-text-left max-w-md">
-                        <h1 className="text-[66px] leading-14 tracking-tight font-bold pt-10">We are<br />movement</h1>
-                        <div className="mt-20 space-y-4">
-                            <h2 className="text-lg leading-5 font-medium">Your<br />freedom to<br />enjoy life</h2>
+                        <h1 className="text-3xl md:text-5xl lg:text-[66px] leading-6 sm:leading-10 md:leading-12 lg:leading-14 tracking-tight font-bold -mt-32 lg:-mt-0 -mr-10 sm:-mt-40 lg:pt-10">We are<br />movement</h1>
+                        <div className="mt-20 space-y-4 lg:block hidden">
+                            <h2 className="text-base sm:text-lg leading-5 font-medium">Your<br />freedom to<br />enjoy life</h2>
                             <p className="w-10 h-px bg-white" />
-                            <p className="text-[11px] font-semibold leading-4 max-w-[300px]">Every flight is designed around your comfort, time, and ambitions.</p>
+                            <p className="md:text-[10px] lg:text-[11px] font-semibold leading-4 max-w-[300px]">Every flight is designed around your comfort, time, and ambitions.</p>
                         </div>
                     </div>
                     <div className="hero-text-right max-w-md flex flex-col items-end">
-                        <h1 className="text-[60px] font-bold leading-14 text-right pt-20">We are<br />distinction</h1>
+                        <h1 className="text-3xl md:text-5xl lg:text-[60px] font-bold leading-6 sm:leading-10 md:leading-12 lg:leading-14 text-right mt-56 sm:mt-0 mr-80 sm:mr-0 md:pt-60 lg:pt-20">We are<br />distinction</h1>
                     </div>
                 </div>
 
-                <div className="scroll-indicator absolute bottom-20 right-20 z-20 text-white w-[25%]">
+                <div className="scroll-indicator absolute bottom-20 right-20 z-20 text-white md:w-[30%] lg:w-[25%]">
                     <div className="mb-4 h-[1px] w-full bg-white" />
-                    <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-2 text-[9px] font-bold tracking-tight">
+                    <div className="hidden sm:flex items-center justify-between">
+                        <div className="flex items-center gap-2 text-[8px] lg:text-[9px] font-bold tracking-tight">
                             <div className="flex flex-col -space-y-2">
                                 <ChevronDown size={15} />
                                 <ChevronDown size={15} className='-mt-[11px]' />
@@ -171,11 +189,10 @@ const SmoothScrollHero = () => {
                             </div>
                             <span>SCROLL DOWN</span>
                         </div>
-                        <p className='text-[9px] tracking-tight'>TO START THE JOURNEY</p>
+                        <p className='text-[8px] lg:text-[9px] tracking-tight'>TO START THE JOURNEY</p>
                     </div>
                 </div>
 
-                {/* Second Section Animated Text */}
                 <div ref={secondSectionRef} className="absolute inset-0 z-30 flex flex-col items-center justify-center text-left text-white px-4 sm:px-8 md:px-10 pointer-events-none opacity-0">
                     <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[45px] w-full sm:max-w-6xl leading-8 sm:leading-10 md:leading-12 lg:leading-14">
                         <span className="font-bold tracking-tight">Jesko Jets®</span> is a private aviation operator with over 5,000 missions completed across 150+ countries. From international executives to global industries, our clients trust us to deliver on time, every time.
