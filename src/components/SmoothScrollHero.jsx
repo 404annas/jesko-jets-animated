@@ -55,8 +55,10 @@ const SmoothScrollHero = () => {
             .to(".scroll-indicator", { opacity: 0, duration: 1 }, 0);
 
         // 2. Move Logo to Navbar position (Now it stays fixed because parent is fixed)
+        const logoMoveFactor = window.innerWidth < 1024 ? 0.43 : 0.44;
+
         tl.to(logoRef.current, {
-            y: -window.innerHeight * 0.44, // Adjust this value to align perfectly with your navbar items
+            y: -window.innerHeight * logoMoveFactor,
             scale: 0.6,
             duration: 8,
             ease: "power2.inOut"
@@ -174,8 +176,8 @@ const SmoothScrollHero = () => {
                 </div>
 
                 {/* Second Section Animated Text */}
-                <div ref={secondSectionRef} className="absolute inset-0 z-30 flex flex-col items-center justify-center text-left text-white px-10 pointer-events-none opacity-0">
-                    <h2 className="text-[44px] md:text-[45px] max-w-6xl leading-14">
+                <div ref={secondSectionRef} className="absolute inset-0 z-30 flex flex-col items-center justify-center text-left text-white px-4 sm:px-8 md:px-10 pointer-events-none opacity-0">
+                    <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[45px] w-full sm:max-w-6xl leading-8 sm:leading-10 md:leading-12 lg:leading-14">
                         <span className="font-bold tracking-tight">Jesko Jets®</span> is a private aviation operator with over 5,000 missions completed across 150+ countries. From international executives to global industries, our clients trust us to deliver on time, every time.
                     </h2>
                 </div>

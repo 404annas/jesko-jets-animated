@@ -1,6 +1,6 @@
 const NavItem = ({ text }) => {
     return (
-        <div className="relative h-6 px-3 overflow-hidden cursor-pointer group flex items-center justify-center">
+        <div className="relative h-8 lg:h-6 px-3 overflow-hidden cursor-pointer group flex items-center justify-center">
 
             {/* Fixed background */}
             <div className="absolute inset-0 bg-white/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100 rounded-sm" />

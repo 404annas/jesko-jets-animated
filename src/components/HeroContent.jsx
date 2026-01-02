@@ -6,12 +6,12 @@ const HeroContent = () => {
         <div className="absolute bg-black/5 inset-0 flex items-center justify-between px-20 text-white">
             {/* Left Section */}
             <div className="flex-1 max-w-md">
-                <h1 className="text-[66px] leading-14 pt-16 pb-16 tracking-tight font-bold ">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[66px] leading-14 pt-16 pb-16 tracking-tight font-bold ">
                     We are<br />movement
                 </h1>
 
                 <div className="space-y-4">
-                    <h2 className="text-lg leading-5">
+                    <h2 className="text-base sm:text-lg leading-5">
                         Your<br />
                         freedom to<br />
                         enjoy life
@@ -32,7 +32,7 @@ const HeroContent = () => {
 
             {/* Right Section */}
             <div className="flex-1 max-w-md flex flex-col items-end">
-                <h1 className="text-[60px] font-bold leading-14 text-right pt-52 pb-20">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[60px] font-bold leading-14 text-right pt-52 pb-20">
                     We are<br />distinction
                 </h1>
 
