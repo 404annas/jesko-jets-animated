@@ -173,7 +173,7 @@ const SmoothScrollHero = () => {
                         </div>
                     </div>
                     <div className="hero-text-right max-w-md flex flex-col items-end">
-                        <h1 className="text-4xl md:text-5xl lg:text-[60px] font-bold leading-6 sm:leading-10 md:leading-12 lg:leading-14 text-right mt-90 sm:mt-0 mr-84 sm:mr-0 md:pt-60 lg:pt-20">We are<br />distinction</h1>
+                        <h1 className="text-4xl md:text-5xl lg:text-[60px] font-bold leading-6 sm:leading-10 md:leading-12 lg:leading-14 text-right mt-90 sm:mt-0 mr-88 sm:mr-0 md:pt-60 lg:pt-20">We are<br />distinction</h1>
                     </div>
                 </div>
 
