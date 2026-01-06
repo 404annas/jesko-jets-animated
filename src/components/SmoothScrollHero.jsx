@@ -40,8 +40,11 @@ const SmoothScrollHero = () => {
             }
         });
 
+        // Optimization: Added force3D and a tiny rotation to trigger GPU subpixel rendering
         tl.to(windowRef.current, {
             scale: 5,
+            rotation: 0.01,
+            force3D: true,
             duration: 10,
             ease: "power2.in"
         }, 0)
@@ -98,43 +101,42 @@ const SmoothScrollHero = () => {
             <Navbar />
 
             <div className="fixed inset-0 flex items-center justify-center z-[200] pointer-events-none">
-                <div className="w-[180px] sm:w-[220px] lg:w-[250px]">
+                <div className="w-[150px] sm:w-[220px] lg:w-[250px]">
                     <Image
                         ref={logoRef}
                         src={skyightLogo}
                         alt="Skyight Logo"
-                        className="w-full h-auto object-contain ml-1"
+                        className="w-full h-auto object-contain sm:ml-1"
                         priority
                     />
                 </div>
             </div>
 
-            <div className="fixed inset-0 -z-50">
+            <div className="fixed inset-0 -z-50" style={{ transform: 'translate3d(0,0,0)' }}>
                 <Image src={skyImage} alt="sky" fill className="object-cover object-bottom" priority quality={100} unoptimized />
             </div>
 
-            <div className="fixed inset-0 -z-40 overflow-hidden">
+            <div className="fixed inset-0 -z-40 overflow-hidden" style={{ transform: 'translate3d(0,0,0)' }}>
                 <div ref={cloudsRef} className="clouds-drift absolute inset-0 flex w-[500%] h-full">
                     <div className="relative w-1/2 h-full">
-                        <Image src={cloudsImage} alt="clouds" fill className="object-cover opacity-60" sizes="100vw" unoptimized />
+                        <Image src={cloudsImage} alt="clouds" fill className="object-cover opacity-60" unoptimized />
                     </div>
                     <div className="relative w-1/2 h-full">
-                        <Image src={cloudsImage} alt="clouds" fill className="object-cover opacity-60" sizes="100vw" unoptimized />
+                        <Image src={cloudsImage} alt="clouds" fill className="object-cover opacity-60" unoptimized />
                     </div>
                 </div>
             </div>
 
             <div ref={mainContainer} className="relative w-full h-screen overflow-hidden">
-                <div ref={windowRef} className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none will-change-transform">
-                    <div className="relative w-full h-full">
+                <div ref={windowRef} className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none will-change-transform" style={{ perspective: '1000px', backfaceVisibility: 'hidden' }}>
+                    <div className="relative w-full h-full" style={{ transformStyle: 'preserve-3d' }}>
                         <Image
                             src={innerImage}
                             alt="inner"
                             fill
                             className="object-cover scale-100 lg:scale-[1.3] z-10"
-                            sizes="(max-width: 1024px) 100vw, 150vw"
                             quality={100}
-                            style={{ transform: 'translateZ(0)' }}
+                            style={{ transform: 'translateZ(0)', backfaceVisibility: 'hidden' }}
                             unoptimized
                         />
                         <Image
@@ -142,9 +144,8 @@ const SmoothScrollHero = () => {
                             alt="shadow"
                             fill
                             className="object-cover scale-100 lg:scale-[1.3] opacity-50 z-20"
-                            sizes="(max-width: 1024px) 100vw, 150vw"
                             quality={100}
-                            style={{ transform: 'translateZ(0)' }}
+                            style={{ transform: 'translateZ(0)', backfaceVisibility: 'hidden' }}
                             unoptimized
                         />
                         <Image
@@ -152,9 +153,8 @@ const SmoothScrollHero = () => {
                             alt="outer"
                             fill
                             className="object-cover scale-100 lg:scale-[1.3] z-30"
-                            sizes="(max-width: 1024px) 100vw, 150vw"
                             quality={100}
-                            style={{ transform: 'translateZ(0)' }}
+                            style={{ transform: 'translateZ(0)', backfaceVisibility: 'hidden' }}
                             unoptimized
                         />
                         <div className="absolute top-[22.5%] left-[50%] md:top-[10%] md:left-[50.3%] -translate-x-1/2 w-[50%] md:w-[24%] h-auto z-10">
@@ -165,7 +165,7 @@ const SmoothScrollHero = () => {
 
                 <div ref={contentRef} className="absolute inset-0 z-20 flex items-center justify-between px-20 text-white pointer-events-none">
                     <div className="hero-text-left max-w-md">
-                        <h1 className="text-4xl md:text-5xl lg:text-[66px] leading-6 sm:leading-10 md:leading-12 lg:leading-14 tracking-tight font-bold -mt-60 lg:-mt-0 -ml-10 sm:-ml-0 -mr-10 sm:-mt-40 lg:pt-10">We are<br />movement</h1>
+                        <h1 className="text-4xl md:text-5xl lg:text-[66px] leading-6 sm:leading-10 md:leading-12 lg:leading-14 tracking-tight font-bold -mt-72 lg:-mt-0 -ml-10 sm:-ml-0 -mr-10 sm:-mt-40 lg:pt-10">We are<br />movement</h1>
                         <div className="mt-20 space-y-4 lg:block hidden">
                             <h2 className="text-base sm:text-lg leading-5 font-medium">Your<br />freedom to<br />enjoy life</h2>
                             <p className="w-10 h-px bg-white" />
@@ -173,7 +173,7 @@ const SmoothScrollHero = () => {
                         </div>
                     </div>
                     <div className="hero-text-right max-w-md flex flex-col items-end">
-                        <h1 className="text-4xl md:text-5xl lg:text-[60px] font-bold leading-6 sm:leading-10 md:leading-12 lg:leading-14 text-right mt-80 sm:mt-0 mr-96 sm:mr-0 md:pt-60 lg:pt-20">We are<br />distinction</h1>
+                        <h1 className="text-4xl md:text-5xl lg:text-[60px] font-bold leading-6 sm:leading-10 md:leading-12 lg:leading-14 text-right mt-80 sm:mt-0 mr-84 sm:mr-0 md:pt-60 lg:pt-20">We are<br />distinction</h1>
                     </div>
                 </div>
 
