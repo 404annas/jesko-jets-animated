@@ -101,7 +101,7 @@ const SmoothScrollHero = () => {
             <Navbar />
 
             <div className="fixed inset-0 flex items-center justify-center z-[200] pointer-events-none">
-                <div className="w-[150px] sm:w-[220px] lg:w-[250px]">
+                <div className="w-[200px] sm:w-[220px] lg:w-[250px]">
                     <Image
                         ref={logoRef}
                         src={skyightLogo}
@@ -173,7 +173,7 @@ const SmoothScrollHero = () => {
                         </div>
                     </div>
                     <div className="hero-text-right max-w-md flex flex-col items-end">
-                        <h1 className="text-4xl md:text-5xl lg:text-[60px] font-bold leading-6 sm:leading-10 md:leading-12 lg:leading-14 text-right mt-90 sm:mt-0 mr-88 sm:mr-0 md:pt-60 lg:pt-20">We are<br />distinction</h1>
+                        <h1 className="text-4xl md:text-5xl lg:text-[60px] font-bold leading-6 sm:leading-10 md:leading-12 lg:leading-14 text-right mt-96 sm:mt-0 mr-88 sm:mr-0 md:pt-60 lg:pt-20">We are<br />distinction</h1>
                     </div>
                 </div>
 
