@@ -62,7 +62,7 @@ const SmoothScrollHero = () => {
             ease: "power2.inOut"
         }, 1.5);
 
-        tl.to(".sky-bg", { scale: 1.2, duration: 10 }, 0);
+        // tl.to(".sky-bg", { scale: 1.2, duration: 10 }, 0);
 
         tl.fromTo(secondSectionRef.current,
             {
@@ -105,7 +105,7 @@ const SmoothScrollHero = () => {
                         ref={logoRef}
                         src={skyightLogo}
                         alt="Skyight Logo"
-                        className="w-full h-auto object-contain"
+                        className="w-full h-auto object-contain sm:ml-1"
                         priority
                     />
                 </div>

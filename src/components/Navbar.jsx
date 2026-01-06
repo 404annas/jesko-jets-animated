@@ -72,7 +72,7 @@ const Navbar = () => {
 
                 {/* Sidebar Content */}
                 <div
-                    className={`absolute right-0 top-0 h-screen w-3/4 sm:w-1/2 bg-[#0a0a0a] transition-transform duration-500 ease-in-out flex flex-col px-6 py-10 ${isOpen ? "translate-x-0" : "translate-x-full"
+                    className={`absolute right-0 top-0 h-screen w-3/4 sm:w-1/2 bg-[#0a0a0a] transition-transform duration-500 ease-in-out flex flex-col px-6 pt-8 pb-10 ${isOpen ? "translate-x-0" : "translate-x-full"
                         }`}
                     onClick={(e) => e.stopPropagation()}
                 >
@@ -86,7 +86,7 @@ const Navbar = () => {
                         />
                         <button
                             onClick={() => setIsOpen(false)}
-                            className="text-white p-2 hover:bg-white/10 transition-all duration-300 rounded-sm cursor-pointer"
+                            className="text-white p-2 hover:bg-white/10 transition-all duration-300 rounded-sm cursor-pointer mt-4"
                         >
                             <X size={20} strokeWidth={1.5} />
                         </button>

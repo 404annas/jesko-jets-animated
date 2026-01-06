@@ -18,26 +18,25 @@ const Hero = () => {
 
     useGSAP(() => {
         gsap.to(cloudRef.current, {
-            xPercent: -50, // Move left by half the width of the container
-            duration: 20,  // Adjust speed
+            xPercent: -50,
+            duration: 20,
             ease: "none",
             repeat: -1
         })
     }, { scope: container });
 
     return (
-        <div ref={container} className="fixed inset-0 w-full h-full -z-10">
+        <div ref={container} className="fixed inset-0 w-full h-full -z-10 overflow-hidden">
 
-            {/* Inner Image - peeche */}
+            {/* Inner Image - Uses object-contain on mobile so the frame "scales down" to fit */}
             <div className="absolute inset-0 -z-40">
                 <Image
                     src={innerImage}
                     alt="Inner Background"
                     fill
-                    className="object-cover -scale-128 sm:scale-128"
+                    className="object-contain sm:object-cover scale-100 sm:scale-[1.28]"
                     priority
                     quality={100}
-                    style={{ objectFit: "cover" }}
                 />
             </div>
 
@@ -67,16 +66,15 @@ const Hero = () => {
                 </div>
             </div>
 
-            {/* Outer Image - upar */}
+            {/* Outer Image - Changed to object-contain for mobile fit */}
             <div className="absolute inset-0 -z-10">
                 <Image
                     src={outerImage}
                     alt="Outer Background"
                     fill
-                    className="object-cover -scale-128 sm:scale-128"
+                    className="object-contain sm:object-cover scale-100 sm:scale-[1.28]"
                     priority
                     quality={100}
-                    style={{ objectFit: "cover" }}
                 />
             </div>
 
@@ -86,14 +84,13 @@ const Hero = () => {
                     src={shadowImage}
                     alt="Shadow Background"
                     fill
-                    className="object-cover -scale-150 sm:scale-150"
+                    className="object-contain sm:object-cover scale-100 sm:scale-[1.50]"
                     priority
                     quality={100}
-                    style={{ objectFit: "cover" }}
                 />
             </div>
 
-            {/* Sky Image */}
+            {/* Sky Image - Kept as object-cover so there are no empty bars on mobile */}
             <div className="absolute inset-0 -z-50">
                 <Image
                     src={skyImage}
@@ -102,30 +99,16 @@ const Hero = () => {
                     className="object-cover object-top"
                     priority
                     quality={100}
-                    style={{ objectFit: "cover" }}
                 />
             </div>
 
-            {/* Clouds Image */}
-            {/* <div className="absolute inset-0 -z-50">
-                <Image
-                    src={cloudsImage}
-                    alt="Clouds Background"
-                    fill
-                    className="object-cover"
-                    priority
-                    quality={100}
-                    style={{ objectFit: "cover" }}
-                />
-            </div> */}
-
-            {/* Upper Image */}
+            {/* Upper Image - Not touched as requested */}
             <div className="absolute top-14.5 left-[38%] -z-40 w-[80%] h-auto">
                 <Image
                     src={aboveImage}
                     alt="Above Background"
-                    width={330}        // desired width
-                    height={200}        // maintain aspect ratio
+                    width={330}
+                    height={200}
                     className="object-contain"
                     priority
                     quality={100}
