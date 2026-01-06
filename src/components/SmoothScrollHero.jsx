@@ -62,8 +62,6 @@ const SmoothScrollHero = () => {
             ease: "power2.inOut"
         }, 1.5);
 
-        // tl.to(".sky-bg", { scale: 1.2, duration: 10 }, 0);
-
         tl.fromTo(secondSectionRef.current,
             {
                 opacity: 0,
@@ -112,16 +110,16 @@ const SmoothScrollHero = () => {
             </div>
 
             <div className="fixed inset-0 -z-50">
-                <Image src={skyImage} alt="sky" fill className="object-cover object-bottom" priority quality={100} />
+                <Image src={skyImage} alt="sky" fill className="object-cover object-bottom" priority quality={100} unoptimized />
             </div>
 
             <div className="fixed inset-0 -z-40 overflow-hidden">
                 <div ref={cloudsRef} className="clouds-drift absolute inset-0 flex w-[500%] h-full">
                     <div className="relative w-1/2 h-full">
-                        <Image src={cloudsImage} alt="clouds" fill className="object-cover opacity-60" sizes="100vw" />
+                        <Image src={cloudsImage} alt="clouds" fill className="object-cover opacity-60" sizes="100vw" unoptimized />
                     </div>
                     <div className="relative w-1/2 h-full">
-                        <Image src={cloudsImage} alt="clouds" fill className="object-cover opacity-60" sizes="100vw" />
+                        <Image src={cloudsImage} alt="clouds" fill className="object-cover opacity-60" sizes="100vw" unoptimized />
                     </div>
                 </div>
             </div>
@@ -129,7 +127,6 @@ const SmoothScrollHero = () => {
             <div ref={mainContainer} className="relative w-full h-screen overflow-hidden">
                 <div ref={windowRef} className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none will-change-transform">
                     <div className="relative w-full h-full">
-                        {/* Added sizes and transform style for clarity */}
                         <Image
                             src={innerImage}
                             alt="inner"
@@ -138,6 +135,7 @@ const SmoothScrollHero = () => {
                             sizes="(max-width: 1024px) 100vw, 150vw"
                             quality={100}
                             style={{ transform: 'translateZ(0)' }}
+                            unoptimized
                         />
                         <Image
                             src={shadowImage}
@@ -147,6 +145,7 @@ const SmoothScrollHero = () => {
                             sizes="(max-width: 1024px) 100vw, 150vw"
                             quality={100}
                             style={{ transform: 'translateZ(0)' }}
+                            unoptimized
                         />
                         <Image
                             src={outerImage}
@@ -156,17 +155,17 @@ const SmoothScrollHero = () => {
                             sizes="(max-width: 1024px) 100vw, 150vw"
                             quality={100}
                             style={{ transform: 'translateZ(0)' }}
+                            unoptimized
                         />
-                        <div className="absolute top-[10%] left-[50.3%] -translate-x-1/2 w-[24%] h-auto z-10">
-                            <Image src={aboveImage} alt="above fixture" width={400} height={200} className="object-contain" quality={100} />
+                        <div className="absolute top-[22.5%] left-[50%] md:top-[10%] md:left-[50.3%] -translate-x-1/2 w-[50%] md:w-[24%] h-auto z-10">
+                            <Image src={aboveImage} alt="above fixture" width={400} height={200} className="object-contain" quality={100} unoptimized />
                         </div>
                     </div>
                 </div>
 
-                {/* Rest of the component remains the same... */}
                 <div ref={contentRef} className="absolute inset-0 z-20 flex items-center justify-between px-20 text-white pointer-events-none">
                     <div className="hero-text-left max-w-md">
-                        <h1 className="text-3xl md:text-5xl lg:text-[66px] leading-6 sm:leading-10 md:leading-12 lg:leading-14 tracking-tight font-bold -mt-32 lg:-mt-0 -mr-10 sm:-mt-40 lg:pt-10">We are<br />movement</h1>
+                        <h1 className="text-3xl md:text-5xl lg:text-[66px] leading-6 sm:leading-10 md:leading-12 lg:leading-14 tracking-tight font-bold -mt-60 lg:-mt-0 -mr-10 sm:-mt-40 lg:pt-10">We are<br />movement</h1>
                         <div className="mt-20 space-y-4 lg:block hidden">
                             <h2 className="text-base sm:text-lg leading-5 font-medium">Your<br />freedom to<br />enjoy life</h2>
                             <p className="w-10 h-px bg-white" />
@@ -174,7 +173,7 @@ const SmoothScrollHero = () => {
                         </div>
                     </div>
                     <div className="hero-text-right max-w-md flex flex-col items-end">
-                        <h1 className="text-3xl md:text-5xl lg:text-[60px] font-bold leading-6 sm:leading-10 md:leading-12 lg:leading-14 text-right mt-56 sm:mt-0 mr-80 sm:mr-0 md:pt-60 lg:pt-20">We are<br />distinction</h1>
+                        <h1 className="text-3xl md:text-5xl lg:text-[60px] font-bold leading-6 sm:leading-10 md:leading-12 lg:leading-14 text-right mt-64 sm:mt-0 mr-80 sm:mr-0 md:pt-60 lg:pt-20">We are<br />distinction</h1>
                     </div>
                 </div>
 
