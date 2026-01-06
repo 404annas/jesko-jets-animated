@@ -120,7 +120,7 @@ const SmoothScrollHero = () => {
                         ref={logoRef}
                         src={skyightLogo}
                         alt="Skyight Logo"
-                        className="w-full h-auto object-contain ml-1 -mt-10"
+                        className="w-full h-auto object-contain ml-1"
                         priority
                     />
                 </div>
