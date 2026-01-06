@@ -165,7 +165,7 @@ const SmoothScrollHero = () => {
 
                 <div ref={contentRef} className="absolute inset-0 z-20 flex items-center justify-between px-20 text-white pointer-events-none">
                     <div className="hero-text-left max-w-md">
-                        <h1 className="text-4xl md:text-5xl lg:text-[66px] leading-6 sm:leading-10 md:leading-12 lg:leading-14 tracking-tight font-bold -mt-72 lg:-mt-0 -ml-10 sm:-ml-0 -mr-10 sm:-mt-40 lg:pt-10">We are<br />movement</h1>
+                        <h1 className="text-4xl md:text-5xl lg:text-[66px] leading-6 sm:leading-10 md:leading-12 lg:leading-14 tracking-tight font-bold -mt-64 lg:-mt-0 -ml-10 sm:-ml-0 -mr-10 sm:-mt-40 lg:pt-10">We are<br />movement</h1>
                         <div className="mt-20 space-y-4 lg:block hidden">
                             <h2 className="text-base sm:text-lg leading-5 font-medium">Your<br />freedom to<br />enjoy life</h2>
                             <p className="w-10 h-px bg-white" />
